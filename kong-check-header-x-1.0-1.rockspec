@@ -1,7 +1,7 @@
-package = "check-header-x"
+package = "kong-check-x-header"
 version = "1.0-1"
 source = {
-  url = "git://github.com/jaikratsinghtariyal/kong-plugin",
+  url = "git://github.com/jaikratsinghtariyal/kong-check-x-header",
 }
 
 description = {

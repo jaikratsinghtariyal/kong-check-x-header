@@ -1,7 +1,7 @@
 local typedefs = require "kong.db.schema.typedefs"
 
 -- Grab pluginname from module name
-local plugin_name = "check-x-header"
+local plugin_name = "kong-check-x-header"
 
 local schema = {
   name = plugin_name,
