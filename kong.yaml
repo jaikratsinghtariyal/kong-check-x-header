@@ -1,0 +1,15 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+- name: first-demo
+  url: https://httpbin.org/anything
+  routes:
+  - name: first-demo-route
+    paths:
+    - /demo
+
+plugins:
+- config:
+  enabled: true
+  name: kong-check-x-header
