@@ -1,4 +1,4 @@
-local PLUGIN_NAME = "kong-check-header-x"
+local PLUGIN_NAME = "check-x-header"
 
 
 -- helper function to validate data against a schema
