@@ -1,5 +1,6 @@
-package = "kong-check-x-header"
+package = "kong-plugin-check-x-header"
 version = "1.0-1"
+local pluginName = package:match("^kong%-plugin%-(.+)$")  -- "check-x-header"
 source = {
   url = "git://github.com/jaikratsinghtariyal/kong-check-x-header",
 }
@@ -16,7 +17,7 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ["kong.plugins.kong-check-x-header.handler"] = "plugin/handler.lua",
-    ["kong.plugins.kong-check-x-header.schema"] = "plugin/schema.lua",
+    ["kong.plugins."..pluginName..".handler"] = "kong/plugins/"..pluginName.."/handler.lua",
+    ["kong.plugins."..pluginName..".schema"] = "kong/plugins/"..pluginName.."/schema.lua",
   }
 }
