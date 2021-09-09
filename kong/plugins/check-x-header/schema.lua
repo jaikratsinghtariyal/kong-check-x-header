@@ -14,7 +14,7 @@ local schema = {
     { config = {
       type = "record",
       fields = {
-        { X_Auth_Token = { type = "string", required = true, default  = "false" }, }
+        { X_Auth_Token = { type = "string", required = false, default  = "false" }, }
       }
     }, },
   },
