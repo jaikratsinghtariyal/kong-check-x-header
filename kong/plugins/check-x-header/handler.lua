@@ -52,24 +52,24 @@ end ]]
 
 -- runs in the 'access_by_lua_block'
 function CheckXheader:access(plugin_conf)
-  if kong.request.get_header("X-Auth-Token") == "VENDOR-A" then 
-    kong.log.debug("Found for Vendor A" )  
-    kong.service.request.set_header("X-Auth-Proceed", "VENDOR-A") 
+  if kong.request.get_header("X-Auth-Token") == "VENDOR-A" then
+    kong.log.debug("Found for Vendor A" )
+    kong.service.response.set_header("X-Auth-Proceed", "VENDOR-A")
     return
-  elseif kong.request.get_header("X-Auth-Token") == "VENDOR-B" then 
-    kong.service.request.set_header("X-Auth-Proceed", "VENDOR-B") 
-    kong.log.debug("Found for Vendor B" )    
+  elseif kong.request.get_header("X-Auth-Token") == "VENDOR-B" then
+    kong.service.response.set_header("X-Auth-Proceed", "VENDOR-B")
+    kong.log.debug("Found for Vendor B" )
     return
-  elseif kong.request.get_header("X-Auth-Token") == "VENDOR-C" then  
-    kong.service.request.set_header("X-Auth-Proceed", "VENDOR-C")  
-    kong.log.debug("Found for Vendor C" )  
+  elseif kong.request.get_header("X-Auth-Token") == "VENDOR-C" then
+    kong.service.response.set_header("X-Auth-Proceed", "VENDOR-C")
+    kong.log.debug("Found for Vendor C" )
     return
-  else 
-    kong.service.request.set_header("X-Auth-Proceed", "no")
+  else
+    kong.service.response.set_header("X-Auth-Proceed", "no")
     return
   end
 
-end 
+end
 
 -- runs in the 'header_filter_by_lua_block'
 -- function plugin:header_filter(plugin_conf)
