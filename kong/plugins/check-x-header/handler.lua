@@ -54,18 +54,18 @@ end ]]
 function CheckXheader:access(plugin_conf)
   if kong.request.get_header("X-Auth-Token") == "VENDOR-A" then
     kong.log.debug("Found for Vendor A" )
-    kong.service.response.set_header("X-Auth-Proceed", "VENDOR-A")
+    kong.service.request.add_header("X-Auth-Proceed", "VENDOR-A")
     return
   elseif kong.request.get_header("X-Auth-Token") == "VENDOR-B" then
-    kong.service.response.set_header("X-Auth-Proceed", "VENDOR-B")
+    kong.service.request.add_header("X-Auth-Proceed", "VENDOR-B")
     kong.log.debug("Found for Vendor B" )
     return
   elseif kong.request.get_header("X-Auth-Token") == "VENDOR-C" then
-    kong.service.response.set_header("X-Auth-Proceed", "VENDOR-C")
+    kong.service.request.add_header("X-Auth-Proceed", "VENDOR-C")
     kong.log.debug("Found for Vendor C" )
     return
   else
-    kong.service.response.set_header("X-Auth-Proceed", "no")
+    kong.service.request.add_header("X-Auth-Proceed", "no")
     return
   end
 
