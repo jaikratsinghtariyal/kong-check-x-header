@@ -1,0 +1,15 @@
+_format_version: "2.1"
+_transform: true
+
+services:
+- name: first-demo
+  url: https://httpbin.org/anything
+  routes:
+  - name: first-demo-route
+    paths:
+    - /demo
+plugins:
+- config:
+    X_Auth_Token: "true"
+  enabled: true
+  name: check-x-header
