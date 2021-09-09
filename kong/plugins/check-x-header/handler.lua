@@ -52,18 +52,21 @@ end ]]
 
 -- runs in the 'access_by_lua_block'
 function CheckXheader:access(plugin_conf)
-
   if kong.request.get_header("X-Auth-Token") == "VENDOR-A" then 
-    kong.log.debug("Found for Vendor A" )   
+    kong.log.debug("Found for Vendor A" )  
+    kong.service.request.set_header("X-Auth-Proceed", "VENDOR-A") 
     return
   elseif kong.request.get_header("X-Auth-Token") == "VENDOR-B" then 
+    kong.service.request.set_header("X-Auth-Proceed", "VENDOR-B") 
     kong.log.debug("Found for Vendor B" )    
     return
-  elseif kong.request.get_header("X-Auth-Token") == "VENDOR-C" then   
+  elseif kong.request.get_header("X-Auth-Token") == "VENDOR-C" then  
+    kong.service.request.set_header("X-Auth-Proceed", "VENDOR-C")  
     kong.log.debug("Found for Vendor C" )  
     return
   else 
-    return false, { status = 401, message = "No Correct Header Found; " .. tostring(err) }
+    kong.service.request.set_header("X-Auth-Proceed", "no")
+    return
   end
 
 end 

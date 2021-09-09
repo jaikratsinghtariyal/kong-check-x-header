@@ -9,7 +9,9 @@ services:
     paths:
     - /demo
 
+
 plugins:
 - config:
+    X_Auth_Token: "true"
   enabled: true
-  name: kong-check-x-header
+  name: check-x-header
